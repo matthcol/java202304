@@ -34,4 +34,15 @@ public class IntegerTest {
                 + " to " + Long.MAX_VALUE
                 + "; example: " + xl);
     }
+
+    @Test
+    void compute() {
+        int x = 5;
+        int y = 4;
+        // NB: / int division (Euclide) => result int
+        int z = (x + y) * (x - 3) / 7;
+        int w = 18 % 7;
+        System.out.println(z);
+        System.out.println(w);
+    }
 }
