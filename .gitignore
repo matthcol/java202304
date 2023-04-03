@@ -1,0 +1,13 @@
+# for Eclipse
+.metadata/
+bin/
+.settings/
+.project
+.classpath
+
+# for IntelliJ Idea
+.idea/
+out/
+
+# for Maven
+target/
