@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.LinkedList;
 import java.util.List;
 
 class ListTest {
@@ -27,6 +28,9 @@ class ListTest {
     void testLinkedList() {
         // creer une list d'entiers en tant que LinkedList avec les valeurs
         // 7, 9, 12, 15, 1, 5, 24, 38, 7
+        List<Integer> temperatures = new LinkedList<>();
+        Collections.addAll(temperatures, 7, 9, 12, 15, 1, 5, 24, 38, 7);
+        System.out.println(temperatures);
     }
 
 }
