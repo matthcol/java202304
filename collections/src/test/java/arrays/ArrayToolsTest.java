@@ -11,7 +11,7 @@ class ArrayToolsTest {
         int[] array = { 1, 5, 12, 7, 8, 4};
         int value = 12;
         int index = ArrayTools.search(array, value);
-        assertEquals(3, index);
+        assertEquals(2, index);
     }
 
     @Test
