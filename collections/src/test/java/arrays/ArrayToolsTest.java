@@ -22,5 +22,12 @@ class ArrayToolsTest {
         assertEquals(-1, index);
     }
 
+    @Test
+    void testSort(){
+        int[] array = { 5, 1, 12, 7, 8, 4};
+        int[] arraySortedExpected = { 1, 4, 5, 7, 8, 12};
+        ArrayTools.sort(array);
+        assertArrayEquals(arraySortedExpected, array);
+    }
 
 }
