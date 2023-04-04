@@ -22,6 +22,8 @@ class ListTest {
         System.out.println(temperatures);
         Collections.addAll(temperatures, 1, 5, 24, 38, 7);
         System.out.println(temperatures);
+        int s = ListTools.sum(temperatures);
+        System.out.println("Sum: " + s);
     }
 
     @Test
@@ -31,6 +33,51 @@ class ListTest {
         List<Integer> temperatures = new LinkedList<>();
         Collections.addAll(temperatures, 7, 9, 12, 15, 1, 5, 24, 38, 7);
         System.out.println(temperatures);
+        int s = ListTools.sum(temperatures);
+        System.out.println("Sum: " + s);
+        Collections.sort(temperatures);
+        System.out.println(temperatures);
+    }
+    @Test
+    void testListCities() {
+        List<String> cities = new ArrayList<>();
+        Collections.addAll(cities, "Toulouse", "Pau", "Montpellier",
+                "Bayonne", "Paris", "Bordeaux", "Lyon", "Marseille");
+        System.out.println(cities);
+        // Exo: en utilisant au maximum par l'API
+        // afficher les villes une par ligne
+        for (String city:  cities) {
+            System.out.println("\t- " + city);
+        }
+        // afficher la ville numéro 3
+        String city = cities.get(3);
+        System.out.println("City #3: " + city);
+        // chercher la position de Bayonne
+        int index = cities.indexOf("Bayonne");
+        System.out.println("Bayonne found at index: " + index);
+        // remplacer la ville 3 par Biarritz
+        cities.set(3, "Biarritz");
+        System.out.println(cities);
+        // tri
+        Collections.sort(cities);
+        System.out.println(cities);
     }
 
+    @Test
+    void testSmallListOfValues() {
+        // Warning: use only for small lists in tests only
+        // this list is unmodifiable !
+        List<String> cities = List.of("Toulouse", "Pau", "Montpellier", "Bayonne",
+                "Paris", "Bordeaux", "Lyon", "Marseille");
+        System.out.println(cities);
+        // cities.add("Rennes"); // java.lang.UnsupportedOperationException
+        // Collections.sort(cities); // java.lang.UnsupportedOperationException
+        for (String city: cities) {
+            System.out.println("\t- " + city);
+        }
+        System.out.println("City count: " + cities.size());
+        System.out.println("Bayonne in city list: " + cities.contains("Bayonne"));
+        System.out.println("Pau and Paris in city list: "
+                + cities.containsAll(List.of("Pau", "Paris")));
+    }
 }

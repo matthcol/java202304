@@ -7,7 +7,7 @@ public class ListTools {
     public static int sum(List<Integer> list) {
         int res = 0;
         for (int value: list) {
-            res += 0;
+            res += value;
         }
         return res;
     }
