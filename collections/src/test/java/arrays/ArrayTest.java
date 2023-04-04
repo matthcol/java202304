@@ -60,4 +60,23 @@ public class ArrayTest {
             System.out.println();
         }
     }
+
+    @Test
+    void testSortBinarySearch() {
+        int[] array = { 1, 5, 12, 9, 7, 8, 4};
+        System.out.println(Arrays.toString(array));
+        // sort algorithm from Java libraries has a cost of O(n.log(n))
+        // n = 1K => cost = 10K
+        // n = 1M => cost = 20M
+        // n = 1G => cost = 30G
+        Arrays.sort(array);
+        System.out.println(Arrays.toString(array));
+        // search algorithm has cost of O(log(n))
+        // n = 1K => cost = 10
+        // n = 1M => cost = 20
+        // n = 1G => cost = 30
+        // n = 1E => cost = 60
+        int index = Arrays.binarySearch(array, 12);
+        System.out.println("Found 12 at index: " + index);
+    }
 }
