@@ -67,12 +67,12 @@ class ListTest {
     void testSmallListOfValues() {
         // Warning: use only for small lists in tests only
         // this list is unmodifiable !
-        List<String> cities = List.of("Toulouse", "Pau", "Montpellier", "Bayonne",
+        var cities = List.of("Toulouse", "Pau", "Montpellier", "Bayonne",
                 "Paris", "Bordeaux", "Lyon", "Marseille");
         System.out.println(cities);
         // cities.add("Rennes"); // java.lang.UnsupportedOperationException
         // Collections.sort(cities); // java.lang.UnsupportedOperationException
-        for (String city: cities) {
+        for (var city: cities) {
             System.out.println("\t- " + city);
         }
         System.out.println("City count: " + cities.size());
@@ -80,4 +80,27 @@ class ListTest {
         System.out.println("Pau and Paris in city list: "
                 + cities.containsAll(List.of("Pau", "Paris")));
     }
+
+    @Test
+    void testListOfList(){
+        // cities has type List<List<String>>
+        var cityListOfList = List.of(
+                List.of("Montpellier", "Toulouse"),
+                List.of("Pau", "Bayonne", "Bordeaux"),
+                List.of("Lyon", "Grenoble")
+        );
+        for (var cityList: cityListOfList) {
+            System.out.println("City list: " + cityList);
+            for (var city: cityList) {
+                System.out.println("\t- " + city);
+            }
+        }
+        // Exo: flatten list of list of cities in one list of cities
+        List<String> allCities = new ArrayList<>();
+        for (var cityList: cityListOfList) {
+        	allCities.addAll(cityList);
+        }
+        System.out.println(allCities);
+    }
+
 }
