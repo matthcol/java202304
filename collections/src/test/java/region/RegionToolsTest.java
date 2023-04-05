@@ -31,8 +31,8 @@ class RegionToolsTest {
         System.out.println(citiesByRegion);
         // verify
         var citiesOccitanie = citiesByRegion.get(region);
-        assertTrue(citiesOccitanie.contains(city));
-        assertEquals(3, citiesOccitanie);
+        assertTrue(citiesOccitanie.contains(city), city + " in region " + region);
+        assertEquals(3, citiesOccitanie.size(), "number of cities from region " + region);
     }
 
     @Test
@@ -43,8 +43,8 @@ class RegionToolsTest {
         System.out.println(citiesByRegion);
         // verify
         var citiesBretagne = citiesByRegion.get(region);
-        assertNotNull(citiesBretagne);
-        assertTrue(citiesBretagne.contains(city));
-        assertEquals(1, citiesBretagne);
+        assertNotNull(citiesBretagne, "key " + region + " in map");
+        assertTrue(citiesBretagne.contains(city), city + " in region " + region);
+        assertEquals(1, citiesBretagne.size(), "number of cities from region " + region);
     }
 }
