@@ -12,7 +12,7 @@ class FormDemo {
 //    }
 
     @Test
-    void demoLsp() {
+    void demoLspPointFormObject() {
         Point point = new Point("A", 3.5, 4.25);
         System.out.println(point);
 
