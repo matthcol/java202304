@@ -1,10 +1,12 @@
 package model;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
-@Data
+// @Data // i.e @Getter @Setter @ToString @EqualsAndHashCode
+@Getter
+@Setter
+@ToString(exclude = "duration")
+@EqualsAndHashCode(exclude = "duration")
 @NoArgsConstructor
 @AllArgsConstructor
 public class MovieL {

@@ -1,6 +1,8 @@
 package model;
 
 
+import java.util.Objects;
+
 public class Movie {
     private String title;
     private int year;
@@ -66,5 +68,18 @@ public class Movie {
 //        sb.append('}');
 //        return sb.toString();
         return title + " (" + year + ")";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Movie movie = (Movie) o;
+        return year == movie.year && duration == movie.duration && Objects.equals(title, movie.title);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(title, year, duration);
     }
 }
