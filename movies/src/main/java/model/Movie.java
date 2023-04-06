@@ -75,11 +75,11 @@ public class Movie {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Movie movie = (Movie) o;
-        return year == movie.year && duration == movie.duration && Objects.equals(title, movie.title);
+        return year == movie.year  && Objects.equals(title, movie.title);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(title, year, duration);
+        return Objects.hash(title, year);
     }
 }
