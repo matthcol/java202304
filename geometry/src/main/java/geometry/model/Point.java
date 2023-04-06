@@ -4,7 +4,7 @@ import lombok.*;
 
 @Getter
 @Setter
-@ToString
+//@ToString(callSuper = true)
 @NoArgsConstructor
 public class Point extends Form {
     private double x;
@@ -39,5 +39,13 @@ public class Point extends Form {
         this.y += deltaY;
 	}
 
-    
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder("Point{");
+        sb.append("name=").append(getName());
+        sb.append(", x=").append(x);
+        sb.append(", y=").append(y);
+        sb.append('}');
+        return sb.toString();
+    }
 }
