@@ -9,8 +9,8 @@ class PointTest {
     @Test
     void testConstructorDefault(){
         var point = new Point();
-        assertEquals(0, point.getX(), "default x");
-        assertEquals(0, point.getY(), "default y");
+        assertEquals(0.0, point.getX(), "default x");
+        assertEquals(0.0, point.getY(), "default y");
     }
 
     @Test
