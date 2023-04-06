@@ -1,5 +1,6 @@
 package geometry.model;
 
+import geometry.utils.Compute;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -86,6 +87,8 @@ class FormDemo {
         // WeightedPoint wp3 = (WeightedPoint) point; // java.lang.ClassCastException
 
         // extraire les weighted points de la liste de point pour calculer le poids total
+        double totalWeight = Compute.filterWeightedPointSumWeight(points);
+        System.out.println("Total weight: " + totalWeight);
     }
 
 }
