@@ -24,6 +24,8 @@ public class TextTest {
 
     @Test
     void testMethods() {
+        // city is an object of class String
+        // city is an instance of class String
         String city = "Toulouse";
 
         // lower/upper
