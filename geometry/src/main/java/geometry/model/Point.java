@@ -5,11 +5,16 @@ import lombok.*;
 @Getter
 @Setter
 @ToString
-@AllArgsConstructor
 @NoArgsConstructor
-public class Point {
+public class Point extends Form {
     private double x;
     private double y;
+
+	public Point(String name, double x, double y) {
+		super(name);
+		this.x = x;
+		this.y = y;
+	}
 
     /**
      * distance from this point to other point
@@ -28,6 +33,7 @@ public class Point {
      * @param deltaX x coordinate offset
      * @param deltaY y coordinate offset
      */
+    @Override
 	public void translate(double deltaX, double deltaY) {
 		this.x += deltaX;
         this.y += deltaY;
