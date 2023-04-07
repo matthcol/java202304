@@ -8,7 +8,7 @@ import java.text.MessageFormat;
 
 public class DatabaseTools {
 
-    public DataSource initDataSourcePostgreSQL(
+    public static DataSource initDataSourcePostgreSQL(
             String host,
             int port,
             String dbname,
@@ -17,7 +17,7 @@ public class DatabaseTools {
     ) {
         var dataSource = new PGSimpleDataSource();
         var url = MessageFormat.format(
-                "jdbc:postgresql://{0}:{1}/{2}",
+                "jdbc:postgresql://{0}:{1,number,#}/{2}",
                 host, port, dbname);
         dataSource.setURL(url);
         dataSource.setUser(user);
