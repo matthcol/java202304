@@ -80,9 +80,11 @@ public class SortDemo {
                 Comparator.comparing(MovieL::getYear),
                 Comparator.comparing(MovieL::getYear).reversed(),
                 Comparator.comparing(MovieL::getYear, Comparator.reverseOrder())
-                        .thenComparing(MovieL::getTitle, String::compareToIgnoreCase)
-                // title, year
-                // duration desc, title
+                        .thenComparing(MovieL::getTitle, String::compareToIgnoreCase),
+                Comparator.comparing(MovieL::getTitle)
+                                .thenComparing(MovieL::getYear),
+                Comparator.comparing(MovieL::getDuration, Comparator.reverseOrder())
+                        .thenComparing(MovieL::getTitle)
         );
     }
 
@@ -98,7 +100,7 @@ public class SortDemo {
                 , new MovieL("Tightrope", 1984, (short) 114, PgType.R)
                 , new MovieL("Unforgiven", 1992, (short) 130, PgType.R)
                 , new MovieL("Thelma & Louise", 1991, (short) 130, PgType.R)
-                , new MovieL("Thundd derball", 1965, (short) 130, PgType.R)
+                , new MovieL("Thunderball", 1965, (short) 130, PgType.R)
         );
         var moviesSorted = movies.stream()
                 //.sorted(Comparator.comparing(MovieL::getTitle))
