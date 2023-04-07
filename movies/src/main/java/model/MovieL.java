@@ -5,7 +5,7 @@ import lombok.*;
 // @Data // i.e @Getter @Setter @ToString @EqualsAndHashCode
 @Getter
 @Setter
-@ToString(exclude = "duration")
+@ToString //(exclude = "duration")
 @EqualsAndHashCode(exclude = "duration")
 @NoArgsConstructor
 @AllArgsConstructor

@@ -78,7 +78,11 @@ public class SortDemo {
         return Stream.of(
                 Comparator.comparing(MovieL::getTitle),
                 Comparator.comparing(MovieL::getYear),
-                Comparator.comparing(MovieL::getYear).reversed()
+                Comparator.comparing(MovieL::getYear).reversed(),
+                Comparator.comparing(MovieL::getYear, Comparator.reverseOrder())
+                        .thenComparing(MovieL::getTitle, String::compareToIgnoreCase)
+                // title, year
+                // duration desc, title
         );
     }
 
@@ -92,6 +96,9 @@ public class SortDemo {
                 , new MovieL("The Man Who Knew Too Much",1934,(short) 75, PgType.R)                , new MovieL("The Man Who Knew Too Much", 1956, (short) 120, PgType.R)
                 , new MovieL("The Terminator", 1984, (short) 107, PgType.R)
                 , new MovieL("Tightrope", 1984, (short) 114, PgType.R)
+                , new MovieL("Unforgiven", 1992, (short) 130, PgType.R)
+                , new MovieL("Thelma & Louise", 1991, (short) 130, PgType.R)
+                , new MovieL("Thundd derball", 1965, (short) 130, PgType.R)
         );
         var moviesSorted = movies.stream()
                 //.sorted(Comparator.comparing(MovieL::getTitle))
