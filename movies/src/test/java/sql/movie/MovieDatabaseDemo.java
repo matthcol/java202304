@@ -9,10 +9,9 @@ import sql.DatabaseTools;
 
 import javax.sql.DataSource;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -41,7 +40,12 @@ class MovieDatabaseDemo {
 
     @Test
     void demoReadFromDb() throws SQLException {
-        String sql = "SELECT id, title, year, duration, pg FROM movies WHERE year = 1984";
+        String sql = """
+                SELECT id, title, year, duration, pg
+                FROM movies 
+                WHERE year = 1984 
+                ORDER BY title""";
+        List<MovieL> movies = new ArrayList<>();
         try (
             Connection connection = dataSource.getConnection();
             Statement statement = connection.createStatement();
@@ -61,10 +65,43 @@ class MovieDatabaseDemo {
 //                        + " " + pgStr
 //                 );
                 MovieL movie = new MovieL(title, year, duration, pg);
-                System.out.println(movie);
+                movies.add(movie);
+//                System.out.println(movie);
             }
-            System.out.println(resultSet);
         } // close resultSet, statement, connection
+        System.out.println(movies);
+    }
+
+    @Test
+    void demoReadFromDbWithArg() throws SQLException {
+        String sql = """
+                SELECT id, title, year, duration, pg
+                FROM movies 
+                WHERE year = ? 
+                ORDER BY title""";
+        List<MovieL> movies = new ArrayList<>();
+        try (
+                Connection connection = dataSource.getConnection();
+                PreparedStatement statement = connection.prepareStatement(sql)
+        ) {
+            // provide values for each arg of the preparedStatement
+            statement.setInt(1, 1993);
+            // execute query
+            try (ResultSet resultSet = statement.executeQuery()) {
+                while (resultSet.next()) {
+                    int id = resultSet.getInt("id");
+                    String title = resultSet.getString("title");
+                    int year = resultSet.getInt("year");
+                    short duration = resultSet.getShort("duration");
+                    String pgStr = resultSet.getString("pg");
+                    PgType pg = PgType.valueOf(pgStr);
+                    MovieL movie = new MovieL(title, year, duration, pg);
+                    movies.add(movie);
+                }
+            }
+        } // close resultSet, statement, connection
+        System.out.println(movies);
+        movies.forEach(System.out::println);
     }
 
 
