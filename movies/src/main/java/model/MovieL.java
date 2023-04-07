@@ -13,4 +13,5 @@ public class MovieL {
     private String title;
     private int year;
     private short duration;
+    private PgType pg;
 }

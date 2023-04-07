@@ -9,8 +9,8 @@ class MovieLTest {
     @Test
     void testLombok(){
         var movie = new MovieL();
-        var movie2 = new MovieL("Interstellar", 2019, (short) 169);
-        var movie3 = new MovieL("Interstellar", 2019, (short) 0);
+        var movie2 = new MovieL("Interstellar", 2019, (short) 169, PgType.PG_13);
+        var movie3 = new MovieL("Interstellar", 2019, (short) 0, PgType.PG_13);
         movie.setTitle("Le Seigneur des Anneaux: les Deux Tours");
         System.out.println(movie2.getTitle());
         System.out.println(movie2);
