@@ -104,5 +104,37 @@ class MovieDatabaseDemo {
         movies.forEach(System.out::println);
     }
 
+    @Test
+    void demoReadFromDbWithArgString() throws SQLException {
+        String sql = """
+                SELECT id, title, year, duration, pg
+                FROM movies 
+                WHERE title ilike ? 
+                ORDER BY title""";
+        List<MovieL> movies = new ArrayList<>();
+        try (
+                Connection connection = dataSource.getConnection();
+                PreparedStatement statement = connection.prepareStatement(sql)
+        ) {
+            // provide values for each arg of the preparedStatement
+            statement.setString(1, "star wars%");
+            // execute query
+            try (ResultSet resultSet = statement.executeQuery()) {
+                while (resultSet.next()) {
+                    int id = resultSet.getInt("id");
+                    String title = resultSet.getString("title");
+                    int year = resultSet.getInt("year");
+                    short duration = resultSet.getShort("duration");
+                    String pgStr = resultSet.getString("pg");
+                    PgType pg = PgType.valueOf(pgStr);
+                    MovieL movie = new MovieL(title, year, duration, pg);
+                    movies.add(movie);
+                }
+            }
+        } // close resultSet, statement, connection
+        System.out.println(movies);
+        movies.forEach(System.out::println);
+    }
+
 
 }
